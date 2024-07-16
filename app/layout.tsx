@@ -6,6 +6,7 @@ export const metadata: Metadata = {
 }
 
 export const dynamic = 'force-static'
+export const runtime = 'edge'
 
 export default function RootLayout({
   children,
