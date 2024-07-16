@@ -1,6 +1,7 @@
 'use client'
-import { useRouter } from 'next/navigation'
-import { FormEvent, useCallback } from 'react'
+import Link from 'next/link'
+import { usePathname, useRouter } from 'next/navigation'
+import { useCallback } from 'react'
 import { useCookie } from 'react-use'
 
 type DismissProps = {
@@ -10,9 +11,10 @@ type DismissProps = {
 export default function Dismiss({ cookieKey }: DismissProps) {
   const [, setCookie] = useCookie(cookieKey)
   const router = useRouter()
+  const pathname = usePathname()
 
-  const handleSubmit = useCallback(
-    (event: FormEvent) => {
+  const handleClick = useCallback(
+    (event: React.MouseEvent) => {
       event.preventDefault()
       event.stopPropagation()
 
@@ -26,8 +28,8 @@ export default function Dismiss({ cookieKey }: DismissProps) {
   )
 
   return (
-    <form onSubmit={handleSubmit}>
-      <button type="submit">Dismiss</button>
-    </form>
+    <Link href={pathname} onClick={handleClick}>
+      Dismiss
+    </Link>
   )
 }
