@@ -11,8 +11,10 @@ export const config = {
        * - Static assets
        * - Image assets
        * - Favicon
+       * - Robots.txt
        */
-      source: '/((?!api|splash|_next/static|_next/image|favicon.ico).*)',
+      source:
+        '/((?!api|splash|_next/static|_next/image|favicon.ico|robots.txt).*)',
       missing: [
         { type: 'header', key: 'next-router-prefetch' },
         { type: 'header', key: 'purpose', value: 'prefetch' },
